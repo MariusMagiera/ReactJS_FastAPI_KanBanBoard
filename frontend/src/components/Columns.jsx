@@ -68,6 +68,8 @@ function Column(props) {
                     task={task}
                     index={index}
                     columnId={props.column.id}
+                    board={props.board}
+                    setBoard={props.setBoard}
                   />
                 ))}
                 {provided.placeholder}

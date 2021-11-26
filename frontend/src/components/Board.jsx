@@ -91,7 +91,7 @@ function Board(props) {
     setBoard({
       ...board,
       columns: {
-        ...board.colums,
+        ...board.columns,
         [newStartColumn.id]: newStartColumn,
         [newFinishColumn.id]: newFinishColumn,
       },
