@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import AddColumn from "./AddColumn";
 import Column from "./Columns";
+import Logout from "./Logout";
 
 const Container = styled.div`
   display: flex;
@@ -11,13 +13,38 @@ const Container = styled.div`
 function Board(props) {
   const initialData = { tasks: {}, columns: {}, columnOrder: [] };
   const [board, setBoard] = useState(initialData);
-  // loading the data initially: becaus of the [] it will only fire once in the beginning
+  // loading the data initially: because of the [] it will only fire once in the beginning
   useEffect(() => {
     fetchBoard().then((data) => setBoard(data));
   }, []);
 
+  // everytime the board changes, the saveBoard() function will execute and update the data
+  useEffect(() => {
+    if (board !== initialData) {
+      saveBoard();
+    }
+  }, [board]);
+
+  async function saveBoard() {
+    const response = await fetch("/board", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // prettier-ignore
+        'Authorization': "Bearer " + props.token,
+      },
+      body: JSON.stringify(board),
+    });
+    const data = await response.json();
+  }
+
   async function fetchBoard() {
-    const response = await fetch("/board");
+    const response = await fetch("/board", {
+      headers: {
+        // prettier-ignore
+        'Authorization': "Bearer " + props.token,
+      },
+    });
     const data = await response.json();
     return data.board;
   }
@@ -101,6 +128,7 @@ function Board(props) {
     // set the area to allow to drag and drop things
     <DragDropContext onDragEnd={onDragEnd}>
       <AddColumn board={board} setBoard={setBoard} />
+      <Logout />
       <Droppable
         droppableId="all-collumns"
         direction="horizontal"
