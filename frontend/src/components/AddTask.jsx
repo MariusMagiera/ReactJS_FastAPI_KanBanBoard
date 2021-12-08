@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
 
 function AddTask(props) {
   const [showNewTaskButton, setShowNewTaskButton] = useState(true);
@@ -42,7 +43,13 @@ function AddTask(props) {
   return (
     <div>
       {showNewTaskButton ? (
-        <button onClick={() => setShowNewTaskButton(false)}> New Task</button>
+        <Button
+          className="new-task-button"
+          onClick={() => setShowNewTaskButton(false)}
+        >
+          {" "}
+          New Task
+        </Button>
       ) : (
         <input
           type="text"

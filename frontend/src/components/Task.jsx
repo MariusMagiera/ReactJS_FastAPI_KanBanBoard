@@ -44,6 +44,7 @@ function Task(props) {
         >
           {props.task.content}
           <span
+            className="delete-task"
             onClick={() =>
               deleteTask(props.columnId, props.index, props.task.id)
             }

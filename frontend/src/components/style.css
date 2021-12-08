@@ -1,0 +1,53 @@
+.main-container {
+  background-color: rgb(236, 236, 236);
+  height: 100vh;
+}
+
+.headline {
+  padding-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: -webkit-xxx-large;
+}
+.new-column-button {
+  background-color: #091251;
+  margin: 30px;
+  float: left;
+  border-color: black;
+  font-weight: bold;
+}
+
+.logout-button {
+  background-color: rgb(119, 119, 119);
+  margin: 30px;
+  float: right;
+  border-color: black;
+}
+
+.new-task-button {
+  background-color: #091151b9;
+  border-color: black;
+}
+.column-card {
+  border-radius: 10px;
+  border-color: grey;
+  background-color: lightslategrey;
+  width: 85%;
+  margin-bottom: 50px;
+}
+
+.delete-task {
+  float: right;
+  margin-top: -10px;
+}
+
+.delete-column {
+  font-weight: 400;
+  float: right;
+  margin-top: -10px;
+}
+
+.card-title {
+  margin-left: 10px;
+  width: -webkit-fill-available;
+}

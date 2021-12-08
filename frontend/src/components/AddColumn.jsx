@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import "./style.css";
 
 function AddColumn(props) {
   const [showNewColumnButton, setShowNewColumnButton] = useState(true);
@@ -33,10 +35,13 @@ function AddColumn(props) {
   return (
     <div>
       {showNewColumnButton ? (
-        <button onClick={() => setShowNewColumnButton(false)}>
+        <Button
+          className="new-column-button"
+          onClick={() => setShowNewColumnButton(false)}
+        >
           {" "}
           New Column
-        </button>
+        </Button>
       ) : (
         <input
           type="text"

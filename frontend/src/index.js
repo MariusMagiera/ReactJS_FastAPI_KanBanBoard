@@ -12,7 +12,7 @@ function getToken() {
 }
 
 function App() {
-  const [token, setToken] = useState(() => getToken);
+  const [token, setToken] = useState(() => getToken());
 
   return (
     <BrowserRouter>

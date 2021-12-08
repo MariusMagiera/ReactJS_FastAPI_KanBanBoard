@@ -3,20 +3,22 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import AddColumn from "./AddColumn";
-import Column from "./Columns";
+import Columns from "./Columns";
 import Logout from "./Logout";
+import { Row, Container, Col } from "react-bootstrap";
 
-const Container = styled.div`
-  display: flex;
-`;
+// const Container = styled.div`
+//   display: flex;
+// `;
 
 function Board(props) {
   const initialData = { tasks: {}, columns: {}, columnOrder: [] };
   const [board, setBoard] = useState(initialData);
-  // loading the data initially: because of the [] it will only fire once in the beginning
+
+  // loading the data initially
   useEffect(() => {
     fetchBoard().then((data) => setBoard(data));
-  }, []);
+  }, [props.token]);
 
   // everytime the board changes, the saveBoard() function will execute and update the data
   useEffect(() => {
@@ -125,38 +127,51 @@ function Board(props) {
     });
   }
   return (
-    // set the area to allow to drag and drop things
-    <DragDropContext onDragEnd={onDragEnd}>
-      <AddColumn board={board} setBoard={setBoard} />
-      <Logout />
-      <Droppable
-        droppableId="all-collumns"
-        direction="horizontal"
-        type="column"
-      >
-        {(provided) => (
-          <Container {...provided.droppableProps} ref={provided.innerRef}>
-            {board.columnOrder.map((columnId, index) => {
-              const column = board.columns[columnId];
-              const tasks = column.taskIds.map(
-                (taskIds) => board.tasks[taskIds]
-              );
-              return (
-                <Column
-                  key={column.id}
-                  column={column}
-                  tasks={tasks}
-                  index={index}
-                  board={board}
-                  setBoard={setBoard}
-                />
-              );
-            })}
-            {provided.placeholder}
-          </Container>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <Container fluid className="main-container">
+      <h1 className="headline">Keep yourself organized!</h1>
+      {/* set the area to allow to drag and drop things */}
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Container>
+          <Row>
+            <Col>
+              <AddColumn board={board} setBoard={setBoard} />
+            </Col>
+            <Col>
+              <Logout />
+            </Col>
+          </Row>
+          <Row>
+            <Droppable
+              droppableId="all-collumns"
+              direction="horizontal"
+              type="column"
+            >
+              {(provided) => (
+                <Container {...provided.droppableProps} ref={provided.innerRef}>
+                  {board.columnOrder.map((columnId, index) => {
+                    const column = board.columns[columnId];
+                    const tasks = column.taskIds.map(
+                      (taskIds) => board.tasks[taskIds]
+                    );
+                    return (
+                      <Columns
+                        key={column.id}
+                        column={column}
+                        tasks={tasks}
+                        index={index}
+                        board={board}
+                        setBoard={setBoard}
+                      />
+                    );
+                  })}
+                  {provided.placeholder}
+                </Container>
+              )}
+            </Droppable>
+          </Row>
+        </Container>
+      </DragDropContext>
+    </Container>
   );
 }
 export default Board;
