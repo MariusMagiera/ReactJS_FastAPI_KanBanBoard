@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import styled from "styled-components";
 import AddColumn from "./AddColumn";
 import Columns from "./Columns";
 import Logout from "./Logout";
@@ -128,10 +127,13 @@ function Board(props) {
   }
   return (
     <Container fluid className="main-container">
-      <h1 className="headline">Keep yourself organized!</h1>
+      <Container className="header-container">
+        <h1 className="headline">Keep yourself organized!</h1>
+      </Container>
+
       {/* set the area to allow to drag and drop things */}
       <DragDropContext onDragEnd={onDragEnd}>
-        <Container>
+        <Container className="board-container">
           <Row>
             <Col>
               <AddColumn board={board} setBoard={setBoard} />

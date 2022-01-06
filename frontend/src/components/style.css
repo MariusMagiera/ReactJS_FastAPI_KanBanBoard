@@ -1,16 +1,46 @@
+/* Board styling */
+
 .main-container {
-  background-color: rgb(236, 236, 236);
+  background-color: rgb(255, 255, 255);
   height: 100vh;
 }
 
+.border-container {
+  background-color: #00182a;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.board-container {
+  padding-bottom: 100px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  --board-color: #8d969d;
+  background-color: var(--board-color);
+}
+.header-container {
+  margin-top: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  padding-right: 0px;
+  padding-left: 0px;
+}
 .headline {
+  --primary-color: #35ae85;
+  background-color: var(--primary-color);
   padding-top: 50px;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
+  color: white;
+  margin-bottom: 0px;
   text-align: center;
   font-size: -webkit-xxx-large;
 }
+
 .new-column-button {
-  background-color: #091251;
+  background-color: #526272;
+  color: white;
   margin: 30px;
   float: left;
   border-color: black;
@@ -19,19 +49,21 @@
 
 .logout-button {
   background-color: rgb(119, 119, 119);
+  color: white;
+  font-weight: bold;
   margin: 30px;
   float: right;
   border-color: black;
 }
 
 .new-task-button {
-  background-color: #091151b9;
+  background-color: var(--primary-color);
   border-color: black;
 }
 .column-card {
   border-radius: 10px;
   border-color: grey;
-  background-color: lightslategrey;
+  background-color: #526272;
   width: 85%;
   margin-bottom: 50px;
 }
@@ -49,5 +81,116 @@
 
 .card-title {
   margin-left: 10px;
+  color: #35ae85;
   width: -webkit-fill-available;
+}
+
+/* Login styling */
+.login-container {
+  background-color: #8d969d;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  max-width: 400px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border-color: #526272;
+  border-style: none;
+}
+
+.login-container p {
+  padding-bottom: 10px;
+  text-shadow: 1px 1px #000000;
+}
+
+.login-container input {
+  border-style: none;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.login-container a {
+  color: #35ae85;
+}
+
+.login-header {
+  color: #35ae85;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.button-div {
+  text-align: center;
+  display: inline-flex;
+}
+
+.login-button {
+  background-color: #35ae85;
+  color: white;
+  float: left;
+  border-color: #000000a3;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+/* registration styling */
+.registration-container {
+  background-color: #8d969d;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  max-width: 400px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border-color: #526272;
+  border-style: none;
+}
+
+.registration-container p {
+  padding-bottom: 10px;
+  text-shadow: 1px 1px #000000;
+}
+
+.registration-container input {
+  border-style: none;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.registration-container a {
+  color: #35ae85;
+}
+
+.registration-header {
+  color: #35ae85;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.button-div {
+  text-align: center;
+  display: inline-flex;
+}
+
+.registration-button {
+  background-color: #35ae85;
+  color: white;
+  float: left;
+  border-color: #000000a3;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
 }

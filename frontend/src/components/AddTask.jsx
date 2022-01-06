@@ -56,6 +56,7 @@ function AddTask(props) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onBlur={handleInputComplete}
+          onKeyPress={(e) => e.key === "Enter" && handleInputComplete()}
         />
       )}
     </div>

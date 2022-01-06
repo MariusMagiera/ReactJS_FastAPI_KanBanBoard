@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Register(props) {
   const [username, setUsername] = useState("");
@@ -34,25 +35,42 @@ function Register(props) {
     return data;
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <p>
-        Username{" "}
-        <input
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-        ></input>
-      </p>
-      <p>
-        Password{" "}
-        <input type="password" onChange={(e) => setPassword(e.target.value)} />
-      </p>
-      <p>
-        <button>Register</button>
-      </p>
-      <p>
-        Already have an account?<Link to="/login"> Login here!</Link>
-      </p>
-    </form>
+    <Container className="border-container">
+      <Row>
+        <Col>
+          <h1 className="registration-header">
+            Register to keep yourself organized!
+          </h1>
+          <Container className="registration-container">
+            <form onSubmit={handleSubmit}>
+              <p>
+                Username{" "}
+                <input
+                  type="text"
+                  onChange={(e) => setUsername(e.target.value)}
+                ></input>
+              </p>
+              <p>
+                Password{" "}
+                <input
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </p>
+              <div className="button-div">
+                <p>
+                  <button className="registration-button">Register</button>
+                </p>
+              </div>
+
+              <p>
+                Already have an account? <Link to="/login"> Login here!</Link>
+              </p>
+            </form>
+          </Container>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

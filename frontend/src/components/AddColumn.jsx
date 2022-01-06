@@ -47,7 +47,8 @@ function AddColumn(props) {
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          onBlur={handleInputComplete}
+          // onBlur={handleInputComplete}
+          onKeyPress={(e) => e.key === "Enter" && handleInputComplete()}
         />
       )}
     </div>

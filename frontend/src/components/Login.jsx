@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -33,26 +34,42 @@ function Login(props) {
     return data;
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <p>
-        Username{" "}
-        <input
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-        ></input>
-      </p>
-      <p>
-        Password{" "}
-        <input type="password" onChange={(e) => setPassword(e.target.value)} />
-      </p>
-      <p>
-        <button>Login</button>
-      </p>
-      <p>
-        Need an account?
-        <Link to="/register">Register here!</Link>
-      </p>
-    </form>
+    <Container className="border-container">
+      <Row>
+        <Col>
+          <h1 className="login-header">
+            Keep yourself organized with our free KanBan Board!
+          </h1>
+          <Container className="login-container">
+            <form onSubmit={handleSubmit}>
+              <p>
+                Username{" "}
+                <input
+                  type="text"
+                  onChange={(e) => setUsername(e.target.value)}
+                ></input>
+              </p>
+              <p>
+                Password{" "}
+                <input
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </p>
+              <div className="button-div">
+                <p>
+                  <button className="login-button">Login</button>
+                </p>
+              </div>
+
+              <p>
+                Need an account? <Link to="/register">Register here!</Link>
+              </p>
+            </form>
+          </Container>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
